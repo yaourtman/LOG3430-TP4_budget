@@ -4,8 +4,8 @@ from django.utils.text import slugify
 
 class Project(models.Model):
 
-    name = models.CharField(max_length=100)
-    slug = models.SlugField(max_length=100, unique=True, blank=True)
+    name = models.CharField(max_length=150)
+    slug = models.SlugField(max_length=135, unique=True, blank=True)
     budget = models.IntegerField()
 
     def save(self, *args, **kwargs):
@@ -27,7 +27,7 @@ class Project(models.Model):
 
 
         for expense in expense_list:
-            total_expense_amount += expense_amount
+            total_expense_amount += expense.amount
 
         # temporary solution, because the form currently only allows integer amounts
         total_expense_amount = int(total_expense_amount)
